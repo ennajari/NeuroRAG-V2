@@ -1,0 +1,273 @@
+{
+  "repo_name": "NeuroRAG-V2",
+  "repo_description": "Systeme d'IA avance avec Multi-Agents, GraphRAG et Memoire Cognitive | Advanced AI System with Multi-Agents, GraphRAG & Cognitive Memory",
+  "topics": [
+    "artificial-intelligence",
+    "rag",
+    "multi-agent-systems",
+    "knowledge-graph",
+    "langchain",
+    "langgraph",
+    "neo4j",
+    "qdrant",
+    "fastapi",
+    "streamlit",
+    "nlp",
+    "machine-learning",
+    "python"
+  ],
+  "labels": [
+    {
+      "name": "feature",
+      "color": "0e8a16",
+      "description": "Nouvelle fonctionnalite"
+    },
+    {
+      "name": "bug",
+      "color": "d73a4a",
+      "description": "Quelque chose ne fonctionne pas"
+    },
+    {
+      "name": "documentation",
+      "color": "0075ca",
+      "description": "Amelioration de la documentation"
+    },
+    {
+      "name": "design",
+      "color": "e99695",
+      "description": "Interface utilisateur / UX"
+    },
+    {
+      "name": "performance",
+      "color": "fbca04",
+      "description": "Optimisation des performances"
+    },
+    {
+      "name": "security",
+      "color": "d93f0b",
+      "description": "Securite"
+    },
+    {
+      "name": "test",
+      "color": "bfd4f2",
+      "description": "Tests unitaires et integration"
+    },
+    {
+      "name": "maintenance",
+      "color": "fbca04",
+      "description": "Maintenance du code"
+    },
+    {
+      "name": "enhancement",
+      "color": "a2eeef",
+      "description": "Amelioration d'une fonctionnalite existante"
+    },
+    {
+      "name": "help-wanted",
+      "color": "008672",
+      "description": "Besoin d'aide sur cette issue"
+    },
+    {
+      "name": "good-first-issue",
+      "color": "7057ff",
+      "description": "Bon pour les debutants"
+    },
+    {
+      "name": "priority-high",
+      "color": "d73a4a",
+      "description": "Haute priorite"
+    },
+    {
+      "name": "dependencies",
+      "color": "0366d6",
+      "description": "Gestion des dependances"
+    }
+  ],
+  "milestones": [
+    {
+      "title": "Phase 1: MVP - RAG Basique",
+      "description": "Construire un systeme RAG fonctionnel de base",
+      "due_date": "2025-11-15",
+      "issues": [
+        {
+          "title": "Initialiser la structure du projet",
+          "body": "Creer la structure de dossiers complete du projet.\n\nTaches:\n- [ ] Creer tous les dossiers\n- [ ] Initialiser __init__.py\n- [ ] Creer requirements.txt\n- [ ] Creer .env.example\n- [ ] Configurer .gitignore\n- [ ] Creer docker-compose.yml",
+          "labels": ["feature", "good-first-issue", "priority-high"]
+        },
+        {
+          "title": "Configurer environnement de developpement",
+          "body": "Mettre en place l'environnement de developpement.\n\nTaches:\n- [ ] Creer environnement virtuel Python\n- [ ] Installer dependances\n- [ ] Lancer Qdrant via Docker\n- [ ] Configurer variables environnement\n- [ ] Tester connexion OpenAI API",
+          "labels": ["maintenance", "priority-high"]
+        },
+        {
+          "title": "Implementer le client LLM (OpenAI)",
+          "body": "Creer classe wrapper pour API OpenAI.\n\nFonctionnalites:\n- [ ] Client OpenAI avec gestion erreurs\n- [ ] Support GPT-4o-mini\n- [ ] Generation embeddings\n- [ ] Gestion du cache\n- [ ] Retry automatique\n- [ ] Logging des appels API",
+          "labels": ["feature", "performance"]
+        },
+        {
+          "title": "Implementer ingestion de documents",
+          "body": "Creer systeme ingestion pour documents.\n\nFonctionnalites:\n- [ ] Chargement PDF\n- [ ] Chargement TXT\n- [ ] Decoupage intelligent en chunks\n- [ ] Nettoyage du texte\n- [ ] Metadonnees des documents",
+          "labels": ["feature"]
+        },
+        {
+          "title": "Implementer Vector Store (Qdrant)",
+          "body": "Creer interface avec Qdrant.\n\nFonctionnalites:\n- [ ] Connexion Qdrant\n- [ ] Creation collection\n- [ ] Insertion vecteurs\n- [ ] Recherche similarite\n- [ ] Filtres metadonnees\n- [ ] Suppression documents",
+          "labels": ["feature", "priority-high"]
+        },
+        {
+          "title": "Creer agent RAG simple",
+          "body": "Developper agent RAG basique.\n\nFonctionnalites:\n- [ ] Classe base pour agents\n- [ ] Agent RAG simple\n- [ ] Prompt engineering\n- [ ] Recherche dans Qdrant\n- [ ] Generation reponse avec contexte",
+          "labels": ["feature", "priority-high"]
+        },
+        {
+          "title": "Creer interface Streamlit MVP",
+          "body": "Interface utilisateur simple avec Streamlit.\n\nFonctionnalites:\n- [ ] Upload de documents\n- [ ] Chat interface\n- [ ] Affichage des sources\n- [ ] Indicateur de chargement\n- [ ] Historique conversation",
+          "labels": ["feature", "design"]
+        },
+        {
+          "title": "Tests du MVP Phase 1",
+          "body": "Tester ensemble du systeme MVP.\n\nTaches:\n- [ ] Tests unitaires\n- [ ] Tests integration\n- [ ] Tests avec documents reels\n- [ ] Verification performances\n- [ ] Correction bugs",
+          "labels": ["test", "priority-high"]
+        },
+        {
+          "title": "Documentation MVP Phase 1",
+          "body": "Documenter le MVP.\n\nTaches:\n- [ ] README.md\n- [ ] Docstrings dans code\n- [ ] Architecture diagram\n- [ ] Guide utilisation\n- [ ] Troubleshooting",
+          "labels": ["documentation"]
+        }
+      ]
+    },
+    {
+      "title": "Phase 2: Multi-Agents System",
+      "description": "Implementer systeme multi-agents avec LangGraph",
+      "due_date": "2025-11-29",
+      "issues": [
+        {
+          "title": "Implementer Orchestrator Agent",
+          "body": "Agent principal qui coordonne.\n\nFonctionnalites:\n- [ ] Analyse requete\n- [ ] Planification etapes\n- [ ] Appel agents specialises\n- [ ] Synthese reponses\n- [ ] Gestion erreurs",
+          "labels": ["feature", "priority-high"]
+        },
+        {
+          "title": "Creer Retrieval Agent specialise",
+          "body": "Agent optimise pour recherche.\n\nFonctionnalites:\n- [ ] Recherche multi-strategies\n- [ ] Query expansion\n- [ ] Re-ranking resultats\n- [ ] Fusion sources",
+          "labels": ["feature"]
+        },
+        {
+          "title": "Creer Reasoning Agent",
+          "body": "Agent raisonnement multi-etapes.\n\nFonctionnalites:\n- [ ] Chain-of-thought\n- [ ] Decomposition questions\n- [ ] Verification coherence\n- [ ] Synthese logique",
+          "labels": ["feature"]
+        },
+        {
+          "title": "Integrer LangGraph",
+          "body": "LangGraph pour workflow agents.\n\nTaches:\n- [ ] Definir graphe workflow\n- [ ] Creer nodes\n- [ ] Definir edges\n- [ ] Gestion etat partage\n- [ ] Visualisation graphe",
+          "labels": ["feature", "priority-high"]
+        },
+        {
+          "title": "Implementer memoire court terme",
+          "body": "Systeme memoire pour session.\n\nFonctionnalites:\n- [ ] Stockage contexte\n- [ ] Sliding window\n- [ ] Resume automatique\n- [ ] Acces rapide infos",
+          "labels": ["feature"]
+        },
+        {
+          "title": "Tests Phase 2 Multi-Agents",
+          "body": "Tester systeme multi-agents.\n\nTaches:\n- [ ] Tests unitaires agents\n- [ ] Tests integration\n- [ ] Tests questions complexes\n- [ ] Benchmark performance",
+          "labels": ["test"]
+        }
+      ]
+    },
+    {
+      "title": "Phase 3: Knowledge Graph + Memoire",
+      "description": "Ajouter Neo4j et systeme memoire complet",
+      "due_date": "2025-12-13",
+      "issues": [
+        {
+          "title": "Implementer Knowledge Graph (Neo4j)",
+          "body": "Integrer Neo4j.\n\nFonctionnalites:\n- [ ] Connexion Neo4j\n- [ ] Creation nodes\n- [ ] Creation relations\n- [ ] Requetes Cypher\n- [ ] Fusion avec Vector DB",
+          "labels": ["feature", "priority-high"]
+        },
+        {
+          "title": "Creer Extraction Agent",
+          "body": "Agent extraction entites.\n\nFonctionnalites:\n- [ ] NER\n- [ ] Extraction relations\n- [ ] Deduplication entites\n- [ ] Enrichissement automatique",
+          "labels": ["feature"]
+        },
+        {
+          "title": "Implementer memoire long terme",
+          "body": "Systeme memoire persistante.\n\nFonctionnalites:\n- [ ] Stockage permanent\n- [ ] Indexation souvenirs\n- [ ] Recuperation contextuelle\n- [ ] Priorisation souvenirs",
+          "labels": ["feature"]
+        },
+        {
+          "title": "Implementer mecanisme oubli",
+          "body": "Systeme intelligent oubli.\n\nFonctionnalites:\n- [ ] Score pertinence\n- [ ] Decay temporel\n- [ ] Consolidation souvenirs\n- [ ] Nettoyage automatique",
+          "labels": ["feature", "performance"]
+        },
+        {
+          "title": "Visualisation 3D Knowledge Graph",
+          "body": "Visualisation interactive graphe.\n\nFonctionnalites:\n- [ ] Rendu 3D Plotly\n- [ ] Interaction zoom rotation\n- [ ] Filtres par type\n- [ ] Highlight chemins\n- [ ] Export graphe",
+          "labels": ["feature", "design"]
+        }
+      ]
+    },
+    {
+      "title": "Phase 4: Vision + Optimisation",
+      "description": "Finaliser avec vision et optimisations",
+      "due_date": "2025-12-27",
+      "issues": [
+        {
+          "title": "Implementer OCR et analyse images",
+          "body": "Capacite traiter images.\n\nFonctionnalites:\n- [ ] OCR Tesseract\n- [ ] Analyse images GPT-4 Vision\n- [ ] Extraction diagrammes\n- [ ] Support multi-langues",
+          "labels": ["feature"]
+        },
+        {
+          "title": "Optimiser couts API (Cache)",
+          "body": "Reduire couts OpenAI.\n\nFonctionnalites:\n- [ ] Cache embeddings\n- [ ] Cache reponses LLM\n- [ ] Deduplication requetes\n- [ ] Strategie cache LRU\n- [ ] Metriques cache hit rate",
+          "labels": ["performance", "priority-high"]
+        },
+        {
+          "title": "Implementer feedback loop",
+          "body": "Amelioration via feedback.\n\nFonctionnalites:\n- [ ] Collecte feedback\n- [ ] Stockage retours\n- [ ] Analyse erreurs\n- [ ] Re-training prompts\n- [ ] Metriques satisfaction",
+          "labels": ["feature", "enhancement"]
+        },
+        {
+          "title": "Creer API REST (FastAPI)",
+          "body": "API REST professionnelle.\n\nEndpoints:\n- [ ] POST /upload\n- [ ] POST /query\n- [ ] GET /documents\n- [ ] GET /graph\n- [ ] POST /feedback\n- [ ] GET /stats",
+          "labels": ["feature", "priority-high"]
+        },
+        {
+          "title": "Documentation complete projet",
+          "body": "Documentation professionnelle.\n\nFichiers:\n- [ ] README.md impressionnant\n- [ ] ARCHITECTURE.md\n- [ ] CONTRIBUTING.md\n- [ ] API_DOCS.md\n- [ ] DEPLOYMENT.md",
+          "labels": ["documentation", "priority-high"]
+        },
+        {
+          "title": "Deploiement Streamlit Cloud",
+          "body": "Deployer application.\n\nTaches:\n- [ ] Preparer requirements.txt\n- [ ] Creer secrets.toml\n- [ ] Tests local\n- [ ] Deployer Streamlit Cloud\n- [ ] Tests post-deploiement",
+          "labels": ["feature", "maintenance"]
+        },
+        {
+          "title": "Tests finaux et benchmarks",
+          "body": "Tests complets.\n\nTaches:\n- [ ] Tests end-to-end\n- [ ] Benchmarks latence\n- [ ] Tests charge\n- [ ] Metriques precision\n- [ ] Rapport performance",
+          "labels": ["test"]
+        }
+      ]
+    },
+    {
+      "title": "Phase 5: Marketing & Communication",
+      "description": "Faire connaitre le projet",
+      "due_date": "2026-01-03",
+      "issues": [
+        {
+          "title": "Creer serie posts LinkedIn",
+          "body": "Strategie posts viraux.\n\nPosts:\n- [ ] Post 1 Teaser\n- [ ] Post 2 Architecture\n- [ ] Post 3 Demo chiffres\n- [ ] Post 4 Lecon technique\n- [ ] Post 5 Annonce open-source\n- [ ] Post 6 Recherche stage",
+          "labels": ["documentation"]
+        },
+        {
+          "title": "Creer video demo",
+          "body": "Video demonstration 3-5 min.\n\nContenu:\n- [ ] Introduction probleme\n- [ ] Architecture systeme\n- [ ] Demo live\n- [ ] Resultats chiffres\n- [ ] Appel a contribuer",
+          "labels": ["documentation", "design"]
+        },
+        {
+          "title": "Rediger article technique",
+          "body": "Article detaille construction.\n\nSections:\n- [ ] Motivation\n- [ ] Architecture\n- [ ] Defis\n- [ ] Solutions\n- [ ] Resultats\n- [ ] Lecons\n- [ ] Perspectives",
+          "labels": ["documentation"]
+        }
+      ]
+    }
+  ]
+}
