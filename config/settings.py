@@ -35,6 +35,9 @@ class Settings(BaseSettings):
     NEO4J_USER: str = os.getenv("NEO4J_USER", "neo4j")
     NEO4J_PASSWORD: str = os.getenv("NEO4J_PASSWORD", "password")
     
+    # Logging
+    LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
+    
     # Cache
     CACHE_TTL: int = 3600
     
