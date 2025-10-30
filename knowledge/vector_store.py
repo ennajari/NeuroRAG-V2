@@ -15,14 +15,20 @@ class VectorStore:
     
     def __init__(self):
         """Initialise la connexion Qdrant"""
-        self.client = QdrantClient(
-            host=settings.QDRANT_HOST,
-            port=settings.QDRANT_PORT
-        )
+        
+        if settings.QDRANT_URL:
+            self.client = QdrantClient(
+                url=settings.QDRANT_URL,
+                api_key=settings.QDRANT_API_KEY,
+            )
+        else:
+            self.client = QdrantClient(
+                host=settings.QDRANT_HOST,
+                port=settings.QDRANT_PORT
+            )
+        
         self.collection_name = settings.QDRANT_COLLECTION_NAME
-        
-        log.info(f"VectorStore initialise: {settings.QDRANT_HOST}:{settings.QDRANT_PORT}")
-        
+        log.info("VectorStore initialise")
         self._ensure_collection_exists()
     
     def _ensure_collection_exists(self):

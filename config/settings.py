@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import Optional
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
-
 # Charger .env
 load_dotenv()
 
@@ -36,7 +35,9 @@ class Settings(BaseSettings):
     QDRANT_HOST: str = os.getenv("QDRANT_HOST", "localhost")
     QDRANT_PORT: int = int(os.getenv("QDRANT_PORT", "6333"))
     QDRANT_COLLECTION_NAME: str = os.getenv("QDRANT_COLLECTION_NAME", "neurorag")
-    
+    # Qdrant Cloud
+    QDRANT_URL: Optional[str] = os.getenv("QDRANT_URL", None)
+    QDRANT_API_KEY: Optional[str] = os.getenv("QDRANT_API_KEY", None)
     # Neo4j
     NEO4J_URI: str = os.getenv("NEO4J_URI", "bolt://localhost:7687")
     NEO4J_USER: str = os.getenv("NEO4J_USER", "neo4j")
