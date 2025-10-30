@@ -44,3 +44,4 @@ htmlcov/
 # Docker
 docker-compose.override.yml
 .venv/Lib/site-packages/pip/_internal/commands/search.py
+.venv/Lib/site-packages/adodbapi/examples/xls_read.py
