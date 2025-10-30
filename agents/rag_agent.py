@@ -62,22 +62,19 @@ class RAGAgent(BaseAgent):
         }
     
     def _retrieve(self, query: str, limit: int = 3) -> List[Dict]:
-        """
-        Recherche les documents pertinents
-        
-        Args:
-            query: Question
-            limit: Nombre max de resultats
-            
-        Returns:
-            Liste de documents pertinents
-        """
+        """Recherche les documents pertinents"""
         log.info(f"Recherche documents pour: {query}")
+        
+        # Adapter le threshold selon la requete
+        if len(query.split()) <= 2:  # Requete courte
+            threshold = 0.0
+        else:  # Requete longue
+            threshold = 0.3
         
         results = self.vector_store.search(
             query=query,
             limit=limit,
-            score_threshold=0.3
+            score_threshold=threshold
         )
         
         log.info(f"Documents trouves: {len(results)}")
