@@ -5,16 +5,12 @@ __pycache__/
 *.so
 .Python
 env/
-env
 venv/
-.venv/
-.venv
 .env
 *.egg-info/
 dist/
 build/
-.github-automation
-.github-automation/
+
 # IDEs
 .vscode/
 .idea/
@@ -43,5 +39,3 @@ htmlcov/
 
 # Docker
 docker-compose.override.yml
-.venv/Lib/site-packages/pip/_internal/commands/search.py
-.venv/Lib/site-packages/adodbapi/examples/xls_read.py
