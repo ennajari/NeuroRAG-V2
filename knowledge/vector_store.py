@@ -90,14 +90,40 @@ class VectorStore:
             
             points.append(point)
         
-        self.client.upsert(
-            collection_name=self.collection_name,
-            points=points
-        )
-        
-        log.info(f"{len(points)} documents ajoutes au vector store")
-        
-        return ids
+        try:
+            self.client.upsert(
+                collection_name=self.collection_name,
+                points=points
+            )
+            
+            log.info(f"{len(points)} documents ajoutes au vector store")
+            
+            return ids
+            
+        except Exception as e:
+            log.error(f"Erreur lors de l'ajout des documents: {e}")
+            
+            # Si erreur de quota, essayer de supprimer des vieux points
+            if "quota" in str(e).lower() or "limit" in str(e).lower():
+                log.warning("Quota atteint, tentative de nettoyage...")
+                try:
+                    # Garder seulement les 100 derniers points
+                    info = self.get_collection_info()
+                    if info['points_count'] > 100:
+                        # Recreer la collection
+                        self.client.delete_collection(self.collection_name)
+                        self._ensure_collection_exists()
+                        # Reessayer
+                        self.client.upsert(
+                            collection_name=self.collection_name,
+                            points=points
+                        )
+                        log.info("Nettoyage reussi, documents ajoutes")
+                        return ids
+                except Exception as cleanup_error:
+                    log.error(f"Echec du nettoyage: {cleanup_error}")
+            
+            raise
     
     def search(
         self,
