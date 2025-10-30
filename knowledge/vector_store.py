@@ -15,13 +15,22 @@ class VectorStore:
     
     def __init__(self):
         """Initialise la connexion Qdrant"""
-        self.client = QdrantClient(
-            host=settings.QDRANT_HOST,
-            port=settings.QDRANT_PORT
-        )
-        self.collection_name = settings.QDRANT_COLLECTION_NAME
         
-        log.info(f"VectorStore initialise: {settings.QDRANT_HOST}:{settings.QDRANT_PORT}")
+        if settings.QDRANT_URL and settings.QDRANT_API_KEY:
+            log.info(f"Connexion a Qdrant Cloud: {settings.QDRANT_URL}")
+            self.client = QdrantClient(
+                url=settings.QDRANT_URL,
+                api_key=settings.QDRANT_API_KEY,
+            )
+        else:
+            log.info(f"Connexion a Qdrant local: {settings.QDRANT_HOST}:{settings.QDRANT_PORT}")
+            self.client = QdrantClient(
+                host=settings.QDRANT_HOST,
+                port=settings.QDRANT_PORT
+            )
+        
+        self.collection_name = settings.QDRANT_COLLECTION_NAME
+        log.info("VectorStore initialise")
         
         self._ensure_collection_exists()
     
@@ -94,7 +103,7 @@ class VectorStore:
         self,
         query: str,
         limit: int = 5,
-        score_threshold: float = 0.5
+        score_threshold: float = 0.0
     ) -> List[Dict]:
         """
         Recherche par similarite
